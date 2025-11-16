@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>eFootball ID Store</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #9ca3af;
+      margin-bottom: 20px;
+    }
+
+    .players-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr); /* คอมใหญ่: 5 รูปต่อ 1 แถว */
+      gap: 16px;
+    }
+
+    /* แท็บเล็ต / จอกลาง ๆ → 3 ใบต่อแถว */
+    @media (max-width: 900px) {
+      .players-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* มือถือจอเล็ก → 2 ใบต่อแถว */
+    @media (max-width: 600px) {
+      .players-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .player-card {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      padding: 6px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, border-color 0.1s ease;
+    }
+
+    .player-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      border-color: #22c55e;
+    }
+
+    .player-card img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #111827;
+      aspect-ratio: 3 / 4; /* แนวตั้งคล้ายการ์ด */
+    }
+
+    .player-name {
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      color: #e5e7eb;
+    }
+  </style>
+</head>
+<body>
+  <h1>ไก่รี 0 เกม ไทยแท้ ยังไม่ผูกเมล</h1>
+  <div class="subtitle">
+    เลือกนักเตะที่ต้องการดูไอดีโดยการกดที่รูปการ์ดด้านล่าง (ชื่อเป็นภาษาอังกฤษ)<br>
+    <span style="font-size:12px;color:#6b7280;">
+      ※ เดี๋ยวค่อยผูกให้คลิกแล้วไปหน้าไอดี / filter ทีหลัง ตอนนี้เป็นเทมเพลตให้ก่อน
+    </span>
+  </div>
+
+  <div class="players-grid" id="playersGrid"></div>
+
+  <script>
+    // ====== เทมเพลตนักเตะ (ตัวอย่าง 5 คนก่อน มึงค่อยเติมเองทีหลัง) ======
+    const playerTemplates = [
+      {
+        name: "Cristiano Ronaldo",
+        key: "Ronaldo",
+        image: "Players_Templates/Ronaldo.png"
+      },
+      {
+        name: "Diego Forlan",
+        key: "Forlan",
+        image: "Players_Templates/Forlan.png"
+      },
+      {
+        name: "Wayne Rooney",
+        key: "Rooney",
+        image: "Players_Templates/Rooney.png"
+      },
+      {
+        name: "Zico",
+        key: "Zico",
+        image: "Players_Templates/Zico.png"
+      },
+      {
+        name: "Rio Ferdinand",
+        key: "Ferdinand",
+        image: "Players_Templates/Ferdinand.png"
+      },
+      {
+        name: "Jude Bellingham",
+        key: "Jude",
+        image: "Players_Templates/Jude.png"
+      }
+      
+      // 👉 ถ้าจะเพิ่มก็แค่ใส่แบบนี้ต่อไปเรื่อย ๆ
+      // { name: "Lionel Messi", key: "Messi", image: "Players_Templates/Messi.png" },
+    ];
+
+    const gridEl = document.getElementById("playersGrid");
+
+    function onPlayerClick(player) {
+      // ตอนนี้ให้แค่ log เฉย ๆ (ไม่มี popup แล้ว)
+      console.log("Clicked player:", player.key, player.name);
+
+      // ถ้าต่อไปมึงมีหน้า list.html สำหรับดูไอดีของนักเตะคนนั้น
+      // ให้เอา // ออกบรรทัดข้างล่างนี้
+      // window.location.href = "list.html?player=" + encodeURIComponent(player.key);
+    }
+
+    function renderPlayerTemplates() {
+      gridEl.innerHTML = "";
+      playerTemplates.forEach(player => {
+        const card = document.createElement("div");
+        card.className = "player-card";
+        card.addEventListener("click", () => onPlayerClick(player));
+
+        const img = document.createElement("img");
+        img.src = player.image;
+        img.alt = player.name;
+
+        // ถ้ารูปหาไม่เจอ (ไฟล์ .png ถูกลบไปแล้ว) → ซ่อนการ์ดนี้เลย
+        img.onerror = () => {
+          card.remove();        // ลบทั้งใบออกจาก DOM
+        };
+
+        const name = document.createElement("div");
+        name.className = "player-name";
+        name.textContent = player.name;
+
+        card.appendChild(img);
+        card.appendChild(name);
+        gridEl.appendChild(card);
+  });
+}
+
+
+    renderPlayerTemplates();
+  </script>
+</body>
+</html>
