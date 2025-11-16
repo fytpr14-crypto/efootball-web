@@ -44,27 +44,27 @@
     }
 
     .player-card {
-      background: #020617;
-      border-radius: 12px;
-      border: 1px solid #1f2937;
-      padding: 6px;
+      background: #f9fafb;               /* โทนอ่อนแบบเว็บตัวอย่าง */
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      padding: 8px;
       cursor: pointer;
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 6px;
+      box-shadow: 0 4px 8px rgba(15,23,42,0.35);
       transition: transform 0.1s ease, box-shadow 0.1s ease, border-color 0.1s ease;
     }
 
     .player-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      box-shadow: 0 10px 25px rgba(15,23,42,0.6);
       border-color: #22c55e;
     }
 
     .player-card img {
       width: 100%;
-      border-radius: 8px;
+      border-radius: 10px;
       object-fit: cover;
       background: #111827;
       aspect-ratio: 3 / 4; /* แนวตั้งคล้ายการ์ด */
@@ -73,8 +73,30 @@
     .player-name {
       font-size: 14px;
       font-weight: 600;
+      text-align: left;
+      color: #111827;
+      padding: 0 4px;
+      min-height: 32px; /* กันชื่อ 2 บรรทัด */
+      overflow: hidden;
+    }
+
+    .player-price-strip {
+      margin-top: 2px;
+      background: #fef3c7;            /* แถบสีครีมแบบปุ่มสั่งซื้อ */
+      border-radius: 8px;
+      padding: 6px 8px;
+      font-size: 14px;
+      font-weight: 700;
       text-align: center;
-      color: #e5e7eb;
+      color: #78350f;
+    }
+
+    .player-stock {
+      margin-top: 4px;
+      font-size: 12px;
+      color: #6b7280;
+      text-align: left;
+      padding: 0 4px 2px 4px;
     }
   </style>
 </head>
@@ -82,48 +104,58 @@
   <h1></h1>
   <div class="subtitle">
     <br>
-    <span style="font-size:12px;color:#6b7280;">     
-    </span>
+    <span style="font-size:12px;color:#6b7280;"></span>
   </div>
 
   <div class="players-grid" id="playersGrid"></div>
 
   <script>
-    // ====== เทมเพลตนักเตะ (ตัวอย่าง 5 คนก่อน มึงค่อยเติมเองทีหลัง) ======
+    // ====== เทมเพลตนักเตะ (มึงค่อยเติมเองทีหลังได้) ======
     const playerTemplates = [
       {
         name: "Cristiano Ronaldo",
         key: "Ronaldo",
-        image: "Players_Templates/Ronaldo.png"
+        image: "Players_Templates/Ronaldo.png",
+        price: 150,     // ราคา
+        left: 3         // คงเหลือ
       },
       {
         name: "Diego Forlan",
         key: "Forlan",
-        image: "Players_Templates/Forlan.png"
+        image: "Players_Templates/Forlan.png",
+        price: 70,
+        left: 5
       },
       {
         name: "Wayne Rooney",
         key: "Rooney",
-        image: "Players_Templates/Rooney.png"
+        image: "Players_Templates/Rooney.png",
+        price: 100,
+        left: 2
       },
       {
         name: "Zico",
         key: "Zico",
-        image: "Players_Templates/Zico.png"
+        image: "Players_Templates/Zico.png",
+        price: 100,
+        left: 1
       },
       {
         name: "Rio Ferdinand",
         key: "Ferdinand",
-        image: "Players_Templates/Ferdinand.png"
+        image: "Players_Templates/Ferdinand.png",
+        price: 90,
+        left: 4
       },
       {
         name: "Jude Bellingham",
         key: "Jude",
-        image: "Players_Templates/Jude.png"
+        image: "Players_Templates/Jude.png",
+        price: 120,
+        left: 6
       }
-      
       // 👉 ถ้าจะเพิ่มก็แค่ใส่แบบนี้ต่อไปเรื่อย ๆ
-      // { name: "Lionel Messi", key: "Messi", image: "Players_Templates/Messi.png" },
+      // { name: "Lionel Messi", key: "Messi", image: "Players_Templates/Messi.png", price: 200, left: 10 },
     ];
 
     const gridEl = document.getElementById("playersGrid");
@@ -157,12 +189,22 @@
         name.className = "player-name";
         name.textContent = player.name;
 
+        const priceStrip = document.createElement("div");
+        priceStrip.className = "player-price-strip";
+        priceStrip.textContent = player.price + "฿";
+
+        const stock = document.createElement("div");
+        stock.className = "player-stock";
+        stock.textContent = "คงเหลือ " + player.left + " ชิ้น";
+
         card.appendChild(img);
         card.appendChild(name);
-        gridEl.appendChild(card);
-  });
-}
+        card.appendChild(priceStrip);
+        card.appendChild(stock);
 
+        gridEl.appendChild(card);
+      });
+    }
 
     renderPlayerTemplates();
   </script>
