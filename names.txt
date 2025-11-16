@@ -272,7 +272,6 @@ Marmous+Reus (4)
 Marmous+Reus (5)
 Marmous+Reus
 Marmous+Vieri
-Marmous+Vitin+CasillasN
 Marmous+Zico (2)
 Marmous+Zico (3)
 Marmous+Zico (4)
@@ -333,7 +332,6 @@ Ronaldo+Mark
 Ronaldo+Milan (2)
 Ronaldo+Nakata (2)
 Ronaldo+Nakata (3)
-Ronaldo+Pepe
 Ronaldo+Sanchez
 Ronaldo+Skinnir (2)
 Ronaldo+Skinnir
@@ -363,7 +361,6 @@ Rooney+Isak (4)
 Rooney+Isak (5)
 Rooney+Isak (6)
 Rooney+Isak
-Rooney+Isak+Supanat
 Rooney+Milan
 Rooney+Reus (2)
 Rooney+Reus
