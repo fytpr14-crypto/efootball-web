@@ -3,104 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <title>eFootball ID Store</title>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      margin: 0;
-      padding: 20px;
-      background: #0f172a;
-      color: #e5e7eb;
-    }
+ <style>
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #0f172a;
+    color: #e5e7eb;
+  }
 
-    h1 {
-      margin-top: 0;
-      margin-bottom: 6px;
-    }
+  .players-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* คอมใหญ่ */
+    gap: 16px;
+  }
 
-    .subtitle {
-      font-size: 14px;
-      color: #9ca3af;
-      margin-bottom: 20px;
-    }
-
+  /* มือถือ → 3 ใบต่อแถว (ใหญ่กว่าของเก่า) */
+  @media (max-width: 900px) {
     .players-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr); /* คอมใหญ่: 5 รูปต่อ 1 แถว */
-      gap: 16px;
+      grid-template-columns: repeat(3, 1fr);
     }
+  }
 
-    /* แท็บเล็ต / จอกลาง ๆ → 3 ใบต่อแถว */
-    @media (max-width: 900px) {
-      .players-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
+  /* มือถือจอเล็กมาก → 2 ใบ */
+  @media (max-width: 500px) {
+    .players-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
+  }
 
-    /* มือถือจอเล็ก → 2 ใบต่อแถว */
-    @media (max-width: 600px) {
-      .players-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+  .player-card {
+    background: #020617;
+    border-radius: 12px;
+    border: 1px solid #1f2937;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+  }
 
-    .player-card {
-      background: #f9fafb;               /* โทนอ่อนแบบเว็บตัวอย่าง */
-      border-radius: 14px;
-      border: 1px solid #e5e7eb;
-      padding: 8px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      box-shadow: 0 4px 8px rgba(15,23,42,0.35);
-      transition: transform 0.1s ease, box-shadow 0.1s ease, border-color 0.1s ease;
-    }
+  /* 👇 รูปไม่บีบ ไม่ยืด — ใหญ่เท่าต้นฉบับ 100% */
+  .player-card img {
+    width: 100%;          /* เต็มการ์ด */
+    height: auto;         /* ปล่อย auto เพื่อไม่บีบ */
+    border-radius: 8px;
+    object-fit: contain;  /* แสดงภาพจริงครบ */
+    background: #111827;
+  }
 
-    .player-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(15,23,42,0.6);
-      border-color: #22c55e;
-    }
+  .player-name {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: #e5e7eb;
+  }
 
-    .player-card {
-      background: #020617;
-      border-radius: 12px;
-      border: 1px solid #1f2937;
-      padding: 6px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      overflow: hidden;
-    }
+  .player-price-strip {
+    margin-top: 6px;
+    background: #fef3c7;
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    color: #78350f;
+  }
 
-    .player-card img {
-      width: 100%;
-      height: 260px;   /* ตั้งความสูงคงที่ เพื่อให้ทุกใบเท่ากัน */
-      object-fit: cover; /* เติมเต็มตัวการ์ดแบบไม่ยืด */
-      border-radius: 8px;
-      background: #111827;
-    }
+  .player-stock {
+    margin-top: 3px;
+    font-size: 12px;
+    color: #9ca3af;
+    text-align: center;
+  }
+</style>
 
-
-    .player-price-strip {
-      margin-top: 2px;
-      background: #fef3c7;            /* แถบสีครีมแบบปุ่มสั่งซื้อ */
-      border-radius: 8px;
-      padding: 6px 8px;
-      font-size: 14px;
-      font-weight: 700;
-      text-align: center;
-      color: #78350f;
-    }
-
-    .player-stock {
-      margin-top: 4px;
-      font-size: 12px;
-      color: #6b7280;
-      text-align: left;
-      padding: 0 4px 2px 4px;
-    }
-  </style>
 </head>
 <body>
   <h1></h1>
