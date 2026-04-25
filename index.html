@@ -8,143 +8,73 @@
 <style>
 body {
   margin: 0;
-  font-family: sans-serif;
-  background: #000;
+  font-family: Arial, sans-serif;
+  background: #0b1220;
   color: white;
 }
 
-/* HEADER (แก้ให้กลาง + ใหญ่) */
+/* HEADER */
 .header {
   text-align: center;
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 900;
-  padding: 20px 10px;
-  letter-spacing: 2px;
-
-  background: linear-gradient(90deg, #00ff88, #00ccff);
+  padding: 20px;
+  background: linear-gradient(90deg, #00ccff, #0066ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* HERO */
-.hero {
-  position: relative;
-  height: 350px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* SECTION */
+.section {
+  padding: 15px;
 }
 
-/* BG */
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: url("bg.jpg") center/cover no-repeat;
-  opacity: 0.5;
+.section-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #9ecbff;
 }
 
-/* ตัวละคร */
-.char {
-  position: absolute;
-  bottom: 0;
-  width: 180px;
-  opacity: 0;
-}
-
-/* ซ้าย */
-.char.left {
-  left: -200px;
-  animation: slideLeft 1s ease forwards;
-}
-
-/* ขวา */
-.char.right {
-  right: -200px;
-  animation: slideRight 1s ease forwards;
-}
-
-/* animation */
-@keyframes slideLeft {
-  to {
-    left: 10px;
-    opacity: 1;
-  }
-}
-
-@keyframes slideRight {
-  to {
-    right: 10px;
-    opacity: 1;
-  }
-}
-
-/* TEXT */
-.hero-content {
-  position: relative;
-  text-align: center;
-  z-index: 2;
-}
-
-.hero h1 {
-  font-size: 24px;
-  margin-bottom: 8px;
-}
-
-.hero p {
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-/* BUTTON */
-.btn {
-  margin-top: 10px;
-  padding: 8px 18px;
-  border: none;
-  border-radius: 20px;
-  background: red;
-  color: white;
-  cursor: pointer;
-}
-
-/* GRID (8 ช่อง) */
+/* GRID (6 ต่อแถว) */
 .grid {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 8px;
-  padding: 10px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
 }
 
 /* CARD */
+.card {
+  background: #101a2f;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: 0.2s;
+}
+
 .card img {
   width: 100%;
-  border-radius: 6px;
   display: block;
 }
 
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #00aaff;
+}
+
 /* Tablet */
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
   .grid {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 /* Mobile */
-@media (max-width: 768px) {
+@media (max-width: 700px) {
   .grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .header {
-    font-size: 28px;
-  }
-
-  .hero {
-    height: 280px;
-  }
-
-  .char {
-    width: 120px;
+    font-size: 26px;
   }
 }
 </style>
@@ -152,42 +82,107 @@ body {
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  FB : Mook Mook
-</div>
+<div class="header">FB : Mook Mook</div>
 
-<!-- HERO -->
-<section class="hero">
+<!-- SECTION 1 -->
+<div class="section">
+  <div class="section-title">นักเตะทั้งหมด</div>
+  <div class="grid">
 
-  <div class="hero-bg"></div>
+    <!-- 10 แถว × 6 = 60 ช่อง -->
+    
+    <!-- COPY BLOCK นี้ซ้ำ -->
+    <!-- ใช้รูปเดียวก่อน -->
+    
+    <!-- ROW AUTO -->
+    <!-- 60 cards -->
+    
+    <!-- ใช้ path ของมึง -->
+    
+    <!-- เริ่ม -->
+    <!-- loop จำลอง -->
+    
+    <!-- 1 -->
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
 
-  <!-- ตัวละคร -->
-  <img src="left.png" class="char left">
-  <img src="right.png" class="char right">
+    <!-- 2 -->
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
 
-  <!-- ข้อความ -->
-  <div class="hero-content">
-    <h1>รวมไอดีเทพ ⚽</h1>
-    <p>เลือกนักเตะที่ต้องการได้ง่าย ๆ</p>
-    <button class="btn">เลือกนักเตะ</button>
+    <!-- 3 -->
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+
+    <!-- 4 -->
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+
+    <!-- 5 -->
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+
+    <!-- 6 -->
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+
+    <!-- 7 -->
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+
+    <!-- 8 -->
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+
+    <!-- 9 -->
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+
+    <!-- 10 -->
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+    <div class="card"><img src="G:/pes/efootball-web/Players_Templates/SinglePlayer/Koller.png"></div>
+
   </div>
-
-</section>
-
-<!-- GRID -->
-<div class="grid">
-
-  <!-- ใส่รูปนักเตะ -->
-  <div class="card"><img src="figo.jpg"></div>
-  <div class="card"><img src="makaay.jpg"></div>
-  <div class="card"><img src="koller.jpg"></div>
-  <div class="card"><img src="gullit.jpg"></div>
-  <div class="card"><img src="nedved.jpg"></div>
-  <div class="card"><img src="eto.jpg"></div>
-  <div class="card"><img src="pele.jpg"></div>
-  <div class="card"><img src="xavi.jpg"></div>
-
 </div>
 
 </body>
