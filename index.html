@@ -13,40 +13,35 @@ body {
   color: white;
 }
 
-/* HEADER */
+/* HEADER (แก้ให้กลาง + ใหญ่) */
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  background: linear-gradient(90deg, #111, #222);
-}
+  text-align: center;
+  font-size: 36px;
+  font-weight: 900;
+  padding: 20px 10px;
+  letter-spacing: 2px;
 
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.icon {
-  font-size: 20px;
+  background: linear-gradient(90deg, #00ff88, #00ccff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* HERO */
 .hero {
   position: relative;
-  height: 400px;
+  height: 350px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* พื้นหลัง */
+/* BG */
 .hero-bg {
   position: absolute;
   inset: 0;
   background: url("bg.jpg") center/cover no-repeat;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 /* ตัวละคร */
@@ -72,14 +67,14 @@ body {
 /* animation */
 @keyframes slideLeft {
   to {
-    left: 20px;
+    left: 10px;
     opacity: 1;
   }
 }
 
 @keyframes slideRight {
   to {
-    right: 20px;
+    right: 10px;
     opacity: 1;
   }
 }
@@ -92,8 +87,8 @@ body {
 }
 
 .hero h1 {
-  font-size: 26px;
-  margin-bottom: 10px;
+  font-size: 24px;
+  margin-bottom: 8px;
 }
 
 .hero p {
@@ -103,24 +98,66 @@ body {
 
 /* BUTTON */
 .btn {
-  margin-top: 15px;
-  padding: 10px 20px;
+  margin-top: 10px;
+  padding: 8px 18px;
   border: none;
   border-radius: 20px;
   background: red;
   color: white;
   cursor: pointer;
 }
+
+/* GRID (8 ช่อง) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 8px;
+  padding: 10px;
+}
+
+/* CARD */
+.card img {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+}
+
+/* Tablet */
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .header {
+    font-size: 28px;
+  }
+
+  .hero {
+    height: 280px;
+  }
+
+  .char {
+    width: 120px;
+  }
+}
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
-  <div class="logo">FB : Mook Mook</div>
-  <div class="icon">🔍</div>
+  FB : Mook Mook
 </div>
 
+<!-- HERO -->
 <section class="hero">
 
   <div class="hero-bg"></div>
@@ -137,6 +174,21 @@ body {
   </div>
 
 </section>
+
+<!-- GRID -->
+<div class="grid">
+
+  <!-- ใส่รูปนักเตะ -->
+  <div class="card"><img src="figo.jpg"></div>
+  <div class="card"><img src="makaay.jpg"></div>
+  <div class="card"><img src="koller.jpg"></div>
+  <div class="card"><img src="gullit.jpg"></div>
+  <div class="card"><img src="nedved.jpg"></div>
+  <div class="card"><img src="eto.jpg"></div>
+  <div class="card"><img src="pele.jpg"></div>
+  <div class="card"><img src="xavi.jpg"></div>
+
+</div>
 
 </body>
 </html>
