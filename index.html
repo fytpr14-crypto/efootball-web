@@ -1,160 +1,142 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <title>eFootball ID Store</title>
- <style>
-  body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    margin: 0;
-    padding: 20px;
-    background: #0f172a;
-    color: #e5e7eb;
-  }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FB : Mook Mook</title>
 
-  .players-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* คอมใหญ่ */
-    gap: 16px;
-  }
+<style>
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #000;
+  color: white;
+}
 
-  /* มือถือ → 3 ใบต่อแถว (ใหญ่กว่าของเก่า) */
-  @media (max-width: 900px) {
-    .players-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: linear-gradient(90deg, #111, #222);
+}
 
-  /* มือถือจอเล็กมาก → 2 ใบ */
-  @media (max-width: 500px) {
-    .players-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
 
-  .player-card {
-    background: #020617;
-    border-radius: 12px;
-    border: 1px solid #1f2937;
-    padding: 6px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-  }
+.icon {
+  font-size: 20px;
+}
 
-  /* 👇 รูปไม่บีบ ไม่ยืด — ใหญ่เท่าต้นฉบับ 100% */
-  .player-card img {
-    width: 100%;          /* เต็มการ์ด */
-    height: auto;         /* ปล่อย auto เพื่อไม่บีบ */
-    border-radius: 8px;
-    object-fit: contain;  /* แสดงภาพจริงครบ */
-    background: #111827;
-  }
+/* HERO */
+.hero {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .player-name {
-    font-size: 14px;
-    font-weight: 600;
-    text-align: center;
-    color: #e5e7eb;
-  }
+/* พื้นหลัง */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url("bg.jpg") center/cover no-repeat;
+  opacity: 0.6;
+}
 
-  .player-price-strip {
-    margin-top: 6px;
-    background: #fef3c7;
-    border-radius: 8px;
-    padding: 6px 8px;
-    font-size: 14px;
-    font-weight: 700;
-    text-align: center;
-    color: #78350f;
-  }
+/* ตัวละคร */
+.char {
+  position: absolute;
+  bottom: 0;
+  width: 180px;
+  opacity: 0;
+}
 
-  .player-stock {
-    margin-top: 3px;
-    font-size: 12px;
-    color: #9ca3af;
-    text-align: center;
+/* ซ้าย */
+.char.left {
+  left: -200px;
+  animation: slideLeft 1s ease forwards;
+}
+
+/* ขวา */
+.char.right {
+  right: -200px;
+  animation: slideRight 1s ease forwards;
+}
+
+/* animation */
+@keyframes slideLeft {
+  to {
+    left: 20px;
+    opacity: 1;
   }
+}
+
+@keyframes slideRight {
+  to {
+    right: 20px;
+    opacity: 1;
+  }
+}
+
+/* TEXT */
+.hero-content {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* BUTTON */
+.btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: red;
+  color: white;
+  cursor: pointer;
+}
 </style>
-
 </head>
+
 <body>
-  <h1></h1>
-  <div class="subtitle">
-    <br>
-    <span style="font-size:12px;color:#6b7280;"></span>
+
+<div class="header">
+  <div class="logo">FB : Mook Mook</div>
+  <div class="icon">🔍</div>
+</div>
+
+<section class="hero">
+
+  <div class="hero-bg"></div>
+
+  <!-- ตัวละคร -->
+  <img src="left.png" class="char left">
+  <img src="right.png" class="char right">
+
+  <!-- ข้อความ -->
+  <div class="hero-content">
+    <h1>รวมไอดีเทพ ⚽</h1>
+    <p>เลือกนักเตะที่ต้องการได้ง่าย ๆ</p>
+    <button class="btn">เลือกนักเตะ</button>
   </div>
 
-  <div class="players-grid" id="playersGrid"></div>
+</section>
 
-  <script>
-    // ====== เทมเพลตนักเตะ (มึงค่อยเติมเองทีหลังได้) ======
-    const playerTemplates = [
-      {
-  name: "Cruf + Pep",
-  key: "Cruf",
-  image: "Players_Templates/1.png",
-  price: 0,
-  left: 1
-},
-        
-      
-      
-      
-      // 👉 ถ้าจะเพิ่มก็แค่ใส่แบบนี้ต่อไปเรื่อย ๆ
-      // { name: "Lionel Messi", key: "Messi", image: "Players_Templates/Messi.png", price: 200, left: 10 },
-    ];
-
-    const gridEl = document.getElementById("playersGrid");
-
-    function onPlayerClick(player) {
-      // ตอนนี้ให้แค่ log เฉย ๆ (ไม่มี popup แล้ว)
-      console.log("Clicked player:", player.key, player.name);
-
-      // ถ้าต่อไปมึงมีหน้า list.html สำหรับดูไอดีของนักเตะคนนั้น
-      // ให้เอา // ออกบรรทัดข้างล่างนี้
-      // window.location.href = "list.html?player=" + encodeURIComponent(player.key);
-    }
-
-    function renderPlayerTemplates() {
-      gridEl.innerHTML = "";
-      playerTemplates.forEach(player => {
-        const card = document.createElement("div");
-        card.className = "player-card";
-        card.addEventListener("click", () => onPlayerClick(player));
-
-        const img = document.createElement("img");
-        img.src = player.image;
-        img.alt = player.name;
-
-        // ถ้ารูปหาไม่เจอ (ไฟล์ .png ถูกลบไปแล้ว) → ซ่อนการ์ดนี้เลย
-        img.onerror = () => {
-          card.remove();        // ลบทั้งใบออกจาก DOM
-        };
-
-        const name = document.createElement("div");
-        name.className = "player-name";
-        name.textContent = player.name;
-
-        const priceStrip = document.createElement("div");
-        priceStrip.className = "player-price-strip";
-        priceStrip.textContent = player.price + "฿";
-
-        const stock = document.createElement("div");
-        stock.className = "player-stock";
-        stock.textContent = "คงเหลือ " + player.left + " ชิ้น";
-
-        card.appendChild(img);
-        card.appendChild(name);
-        card.appendChild(priceStrip);
-        card.appendChild(stock);
-
-        gridEl.appendChild(card);
-      });
-    }
-
-    renderPlayerTemplates();
-  </script>
 </body>
 </html>
